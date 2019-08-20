@@ -34,20 +34,20 @@ export const getLoginData = () => dispatch => {
         });
 };
 
-export const postLoginData = (values) => (dispatch) => {
+export const postLoginData = (credentials) => (dispatch) => {
 
     // loading data 
     dispatch({ type: POST_LOGIN_DATA_START });
     
     axios
         // smurf post api 
-        .post('http://localhost:3333/smurfs', values)
+        .post('http://localhost:3333/smurfs', credentials)
 
         .then(response => {
             // successful 
             console.log("post api response object", response);
             
-            // localStorage.setItem('token', ressponse);
+            // localStorage.setItem('token', response);
              
             // dispatch({ type: POST_LOGIN_DATA_SUCCESS, payload: response });
         }) 
