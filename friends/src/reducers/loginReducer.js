@@ -4,7 +4,10 @@ import {
     FETCH_FRIENDS_DATA_FAILURE,
     POST_LOGIN_DATA_START,
     POST_LOGIN_DATA_SUCCESS,
-    POST_LOGIN_DATA_FAILURE
+    POST_LOGIN_DATA_FAILURE,
+    POST_FRIEND_DATA_START,
+    POST_FRIEND_DATA_SUCCESS,
+    POST_FRIEND_DATA_FAILURE,
 } from '../actions/index.js';
 
 // initial state data 
@@ -12,6 +15,9 @@ const initialState = {
     friends: [],
     dataIsLoading: false, 
     dataError: '',
+    newFriend: {},
+    friendIsLoading: false, 
+    friendError: '',
     credentials: {
         username: '', 
         password: '',
@@ -61,7 +67,29 @@ export const reducer = (state = initialState, action) => {
                 credIsLoading: false,
                 credError: action.payload
             };
+        case POST_FRIEND_DATA_START:
+            return {
+                ...state,
+                frienddIsLoading: true,
+                friendError: ''
+            };
+        case POST_FRIEND_DATA_SUCCESS:
+            return {
+                ...state,
+                friendIsLoading: false,
+                friend: action.payload,
+                friends: [...state.friends, action.payload],
+                friendError: ''
+            };
+        case POST_FRIEND_DATA_FAILURE:
+            return {
+                ...state,
+                friendIsLoading: false,
+                friendError: action.payload
+            };
         default:
             return state;
         }
+
+
 };
