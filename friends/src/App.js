@@ -2,9 +2,11 @@ import React from 'react';
 import './App.css';
 import { BrowserRouter as Router, Route, Link } from 'react-router-dom';
 
-import PrivateRoute from './components /PrivateRoute.js'
+import PrivateRoute from './components /PrivateRoute.js';
 
-import FormikLoginForm from './components /LoginForm.js'
+// components 
+import FormikLoginForm from './components /LoginForm.js';
+import FriendsList from './components /FriendsList.js';
 
 function App() {
   return (
@@ -21,9 +23,10 @@ function App() {
               <Link to="/protected">Protected Page</Link>
             </li>
         </ul>
-        </header>
         <Route path="/login" component={FormikLoginForm} />
         <PrivateRoute exact path="/protected" component={FriendsList} />
+        </header>
+        
       </div>
     </Router>
   );

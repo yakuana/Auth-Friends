@@ -28,8 +28,8 @@ const LoginForm = ({ errors, touched, values, handleSubmit, status, props}) => {
             {/* name */}
             <Field 
                 type="text" 
-                name="name" 
-                placeholder="Name"
+                name="username" 
+                placeholder="Userame"
                 className="field" 
             />
             {touched.name && errors.name && ( <p className="error">{errors.name}</p> )}
@@ -55,16 +55,16 @@ const LoginForm = ({ errors, touched, values, handleSubmit, status, props}) => {
 const FormikLoginForm = withFormik({
     
     // making sure each prop has a default value if given value is undefined 
-    mapPropsToValues({ name, password }) {
+    mapPropsToValues({ username, password }) {
       return {
-        name: name || "",
+        username: username || "",
         password: password || ""
       };
     },
     
     // use yup to enforce input requirements 
     validationSchema: Yup.object().shape({
-        name: Yup
+        username: Yup
         .string()
         .required("Please Enter Your Name"),
         password: Yup
@@ -74,9 +74,8 @@ const FormikLoginForm = withFormik({
     
     // update values and set status 
     handleSubmit(values, { resetForm, props, setStatus }) {
-        
         console.log("values, props", values, props)
-
+        
         props.postLoginData(values);
 
         resetForm(); 
