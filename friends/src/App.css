@@ -2,13 +2,6 @@
   text-align: center;
 }
 
-.components-container {
-  /* background-color: #52678f; */
-  min-height: 100vh;
-  font-size: calc(10px + 2vmin);
-  color: black;
-}
-
 ul {
   list-style-type: none;
   margin: 0;
@@ -47,6 +40,14 @@ li a:hover {
   min-height: 100vh;
   background: linear-gradient(45deg, #2196F3 30%, #21CBF3 90%);
   padding-top: 200px;
+  padding-bottom: 40px; 
+}
+
+.components-container {
+  /* background-color: #52678f; */
+  min-height: 100vh;
+  font-size: calc(10px + 2vmin);
+  color: black;
 }
 
 .error {

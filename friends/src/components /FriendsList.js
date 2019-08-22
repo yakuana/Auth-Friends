@@ -9,23 +9,28 @@ import { getFriendsData } from '../actions/index.js';
 // components 
 import Friend from './Friend.js';
 
+import { friendListStyles } from '../material-ui-styles/friendsListStyles.js';
+
 const FriendsList = props => {
+
+  const style = friendListStyles(); 
+  
   return (
     <div className="master-container">
       <div className="friends-btn" onClick={props.getFriendsData}>
         {props.dataIsLoading ? (
-          <PulseSpinner size={30}
+          <button className={style.button}><PulseSpinner size={30}
           color="#686769"
           loading={props.isLoading}
-          />
+          /></button>
         ) : (
-          <button className="friends-btn">Get Friends</button>
+          <button className={style.button}>Get Friends</button>
         )}
       </div>
-
-      <div className="friends-container">
+      
+      <div className={props.friends.length !== 0 ? style.list : ""}>
         {props.friends && 
-          props.friends.map(friend => <Friend key={friend.id} props={friend} />)}
+          props.friends.map((friend, index) => <Friend key={friend.id} props={friend} index={index} />)}
       </div>
     </div>
   );
