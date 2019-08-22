@@ -1,11 +1,11 @@
 import { makeStyles } from '@material-ui/core/styles';
 
-export const addFriendStyles = makeStyles(theme => ({
+export const friendStyles = makeStyles(theme => ({
 
-    list: {
-        width: theme.spacing(150),
-        borderTop: 0,
-        borderBottom: 0, 
+    item: {
+        borderTop: 1,
+        borderBottom: 1, 
+        borderColor: 'black',
     },
 
 }));

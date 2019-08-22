@@ -1,10 +1,13 @@
 import React from 'react';
+import { friendStyles } from '../material-ui-styles/friendStyles.js'
 
 const Friend = ({ props, index }) => {
 
-  console.log(index)
+  const style = friendStyles(); 
+  
   return (
-    <div className="friend-container">
+    <div className={style.item}>
+      <p>{index}</p>
       <h2 className="friend-name">{props.name}</h2>
       <p className="friend-age">{props.age}</p>
       <p className="friend-email">{props.email}</p>
