@@ -50,11 +50,11 @@ export const postLoginData = (credentials) => (dispatch) => {
 
         .then(response => {
             // successful 
-            console.log("post api response object", response);
+            console.log("post login api response object", response);
             
             localStorage.setItem('token', response.data.payload);
              
-            dispatch({ type: POST_LOGIN_DATA_SUCCESS, payload: response });
+            dispatch({ type: POST_LOGIN_DATA_SUCCESS, payload: response.data.payload });
         }) 
 
         .catch(error => {

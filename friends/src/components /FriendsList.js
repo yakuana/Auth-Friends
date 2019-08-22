@@ -11,7 +11,7 @@ import Friend from './Friend.js';
 
 const FriendsList = props => {
   return (
-    <div className="friends-list-container">
+    <div className="master-container">
       <div className="friends-btn" onClick={props.getFriendsData}>
         {props.dataIsLoading ? (
           <PulseSpinner size={30}
@@ -23,7 +23,7 @@ const FriendsList = props => {
         )}
       </div>
 
-      <div className="smurfs-container">
+      <div className="friends-container">
         {props.friends && 
           props.friends.map(friend => <Friend key={friend.id} props={friend} />)}
       </div>
@@ -33,7 +33,7 @@ const FriendsList = props => {
 
 const mapStateToProps = state => {
   return {
-    dataIsLoading: state.isLoadingSmurf,
+    dataIsLoading: state.dataIsLoading,
     friends: state.friends
   };
 };

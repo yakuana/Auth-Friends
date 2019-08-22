@@ -2,14 +2,54 @@
   text-align: center;
 }
 
-.App-header {
-  background-color: #52678f;
+.components-container {
+  /* background-color: #52678f; */
   min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
   font-size: calc(10px + 2vmin);
-  color: white;
+  color: black;
 }
 
+ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  background-color: #333;
+  position: fixed;
+  top: 0;
+  width: 100%;
+}
+
+li {
+  float: right;
+}
+
+li a {
+  display: block;
+  color: white;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+  font-size: 1.7rem; 
+}
+
+/* Change the link color to #111 (black) on hover */
+li a:hover {
+  background-color: #111;
+}
+
+#friends-list-tab {
+  float: left;
+}
+
+.master-container {
+  /* border: 1px solid pink;  */
+  min-height: 100vh;
+  background: linear-gradient(45deg, #2196F3 30%, #21CBF3 90%);
+  padding-top: 200px;
+}
+
+.error {
+  color: red; 
+  font-size: 1.4rem;
+}

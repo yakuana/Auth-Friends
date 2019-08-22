@@ -1,7 +1,11 @@
 import React, { useEffect, useState } from 'react';
 import { Form, Field, withFormik } from 'formik';
+import { TextField } from 'formik-material-ui';
 import { connect } from 'react-redux';
 import * as Yup from 'yup';
+
+import Paper from '@material-ui/core/Paper';
+import { addFriendStyles } from '../material-ui-styles/addFriendFormStyles.js'
 
 // axios post action 
 import { postFriendData } from '../actions/index.js';
@@ -18,44 +22,54 @@ const AddFriendForm = ({ errors, touched, values, handleSubmit, status, props}) 
         }
     }, [status]); 
 
+    const style = addFriendStyles();
+
     return(
-        <div className="form-container">
-       
-        <h1>Add A Friend</h1>
-
-        <Form className="form">
+        <div className="master-container">
             
-            {/* name */}
-            <Field 
-                type="text" 
-                name="name" 
-                placeholder="Name"
-                className="field" 
-            />
-            {touched.name && errors.name && ( <p className="error">{errors.name}</p> )}
+            <Paper className={style.background}>
 
-            {/* age */}
-            <Field 
-                type="text" 
-                name="age" 
-                placeholder="Age" 
-                className="field" 
-            />
-            {touched.name && errors.name && <p className="error">{errors.name}</p>}
+                <h1>Add A Friend</h1>
 
-             {/* email */}
-             <Field 
-                type="text" 
-                name="email" 
-                placeholder="Email" 
-                className="field" 
-            />
-            {touched.name && errors.name && <p className="error">{errors.name}</p>}
+                <Form className={style.container}>
+                    
+                    {/* name */}
+                    <Field 
+                        type="text" 
+                        name="name" 
+                        placeholder="Name"
+                        className={style.textField}
+                    />
+                    {touched.name && errors.name && ( <p className="error">{errors.name}</p> )}
 
-            <button type="submit" className="button">Submit</button>
-        </Form>
+                    {/* age */}
+                    <Field 
+                        type="text" 
+                        name="age" 
+                        placeholder="Age"  
+                        className={style.textField}
+                    />
+                    {touched.name && errors.name && <p className="error">{errors.name}</p>}
 
-      </div>
+                    {/* email */}
+                    <Field 
+                        type="text" 
+                        name="email" 
+                        placeholder="Email" 
+                        className={style.textField}
+                    />
+                    {touched.name && errors.name && <p className="error">{errors.name}</p>}
+
+                    <button 
+                        type="submit" 
+                        className={style.button}
+                        onClick={() => alert(`Congrats! You added a new friend to your friends' list. Click FriendList in the top left hand corner to see all of your friends!`)}
+                    >
+                        Add
+                    </button>
+                </Form>
+            </Paper>
+        </div>
     );
 };
 
@@ -76,13 +90,13 @@ const FormikAddFriendForm = withFormik({
     validationSchema: Yup.object().shape({
         name: Yup
         .string()
-        .required("Please Enter Your Name"),
+        .required("Please Enter a Name"),
         age: Yup
         .string()
-        .required("Please Enter Your Age"),
+        .required("Please Enter an Age"),
         email: Yup
         .string()
-        .required("Please Enter Your Age"),
+        .required("Please Enter an Email"),
     }),
     
     // update values and set status 
